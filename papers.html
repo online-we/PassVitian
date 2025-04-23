@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papers</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    
+
+
+    <section class="categories" id="categories">
+
+        <!-- Search Bar HTML - Add this before your cards -->
+<div class="search-container">
+    <div class="search-input-wrapper">
+      <input type="text" id="courseSearchInput" placeholder="Search courses...">
+      <button id="courseSearchButton">
+        
+        <span class="search-icon">🔍</span>
+        <span class="search-text">Search</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Leave your existing cards HTML completely unchanged -->
+  
+  <style>
+  /* Only styles for the search functionality */
+  .search-container {
+    margin: 20px auto;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 0 15px;
+  }
+  
+  .search-input-wrapper {
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  
+  #courseSearchInput {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  
+  #courseSearchInput:focus {
+    outline: none;
+    border-color: #4285f4;
+    box-shadow: 0 2px 8px rgba(66,133,244,0.3);
+  }
+  
+  #courseSearchButton {
+    min-width: 60px;
+    padding: 0 15px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #courseSearchButton:hover {
+    background-color: #357ae8;
+  }
+  
+  .search-icon {
+    display: none;
+  }
+  
+  /* Hidden class for filtered cards */
+  .hidden-card {
+    display: none !important;
+  }
+  
+  /* No results message */
+  #noResultsMessage {
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    color: #777;
+    font-size: 18px;
+    display: none;
+  }
+  
+  /* Media query for mobile screens */
+  @media screen and (max-width: 480px) {
+    .search-text {
+      display: none;
+    }
+    
+    .search-icon {
+      display: block;
+    }
+    
+    #courseSearchButton {
+      min-width: 44px;
+      padding: 0 12px;
+    }
+  }
+  </style>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('courseSearchInput');
+    const searchButton = document.getElementById('courseSearchButton');
+    
+    // Get all your course cards - adjust the selector to match your HTML structure
+    // This example uses any element that contains h2 with course codes and paragraph with course titles
+    const courseCards = document.querySelectorAll('.box, [class*="course"]'); // Adjust this selector
+    
+    // Create a "no results" message element
+    const noResultsMessage = document.createElement('div');
+    noResultsMessage.id = 'noResultsMessage';
+    noResultsMessage.textContent = 'No courses found matching your search.';
+    
+    // Add the no results message to the container that holds your cards
+    const cardsContainer = courseCards[0].parentElement;
+    cardsContainer.appendChild(noResultsMessage);
+    
+    // Function to perform search filtering
+    function filterCourses() {
+      const query = searchInput.value.toLowerCase().trim();
+      let hasVisibleCards = false;
+      
+      courseCards.forEach(card => {
+        // Get the text content of the card to search within
+        const cardText = card.textContent.toLowerCase();
+        
+        // Check if the card contains the search query
+        if (cardText.includes(query)) {
+          card.classList.remove('hidden-card');
+          hasVisibleCards = true;
+        } else {
+          card.classList.add('hidden-card');
+        }
+      });
+      
+      // Show/hide the "no results" message
+      if (hasVisibleCards) {
+        noResultsMessage.style.display = 'none';
+      } else {
+        noResultsMessage.style.display = 'block';
+      }
+    }
+    
+    // Event listeners
+    searchButton.addEventListener('click', filterCourses);
+    
+    searchInput.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        filterCourses();
+      } else {
+        // Real-time filtering
+        filterCourses();
+      }
+    });
+    
+    // Initialize by showing all cards
+    filterCourses();
+  });
+  </script>
+
+        <div class="categories-content">
+            <div class="box">
+                <img src="./css/cat1.png" alt="" id="catimg">
+                <h3><a>PHY1002</a></h3>
+                <p>Engineering physics </p>
+                <p><a href="mentor.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat2.png" alt="" id="catimg">
+                <h3>MAT2001</h3>
+                <p>Calculus and laplace transform</p>
+                <p><a href="math.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSD3009</h3>
+                <p>Data structures and analysis of algorithms</p>
+                <p><a href="dsa.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ECE3004</h3>
+                <p>Microprocessors & Microcontrollers</p>
+                <p><a href="mm.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE2002</h3>
+                <p>Data structures and algorithms</p>
+                <p><a href="dsa2.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ECE3005</h3>
+                <p>Digital Signal Processing</p>
+                <p><a href="dsp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE2001</h3>
+                <p>Object oriented programming with c++</p>
+                <p><a href="oops.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE3003</h3>
+                <p>Operating system</p>
+                <p><a href="os.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CCA2016</h3>
+                <p>Introduction to cloud services</p>
+                <p><a href="ics.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT2002</h3>
+                <p>Discrete math and graph theory</p>
+                <p><a href="dm.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>SST1003</h3>
+                <p>Professional communication skills for engineers</p>
+                <p><a href="#" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSD3009</h3>
+                <p>Data structures and analysis of algorithms</p>
+                <p><a href="#" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE2003</h3>
+                <p>Computer Architecture and Organization</p>
+                <p><a href="cao.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CHY1007</h3>
+                <p>Forensic Chemistry and Application</p>
+                <p><a href="fca.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE3003</h3>
+                <p>Operating System</p>
+                <p><a href="cao.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE3006</h3>
+                <p>Computer Networks</p>
+                <p><a href="cn.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ECE2002</h3>
+                <p>Digital Logic Design</p>
+                <p><a href="dld.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CHY1005</h3>
+                <p>Introduction to Computational chemistry</p>
+                <p><a href="cc.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CHY1001</h3>
+                <p>Engineering chemistry</p>
+                <p><a href="ec.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT3002</h3>
+                <p>Applied Linear Algebra</p>
+                <p><a href="ala.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT3003</h3>
+                <p>Probability, Statistics And Reliability</p>
+                <p><a href="psr.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>PHY1005</h3>
+                <p>Physics of game development</p>
+                <p><a href="pgd.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSA2001</h3>
+                <p>Fundamentals in AI & ML</p>
+                <p><a href="aiml.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>EEE1001</h3>
+                <p>Electrical Circuits and Systems</p>
+                <p><a href="eee.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MEE2014</h3>
+                <p>Engineering Design and Modelling</p>
+                <p><a href="edm.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE1021</h3>
+                <p>Introduction to Problem Solving and Programming</p>
+                <p><a href="ipsp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE2006</h3>
+                <p>Programming in Java</p>
+                <p><a href="pj.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>PLA1004</h3>
+                <p>Competitive Coding Practices</p>
+                <p><a href="ccp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>PLA1006</h3>
+                <p>Lateral Thinking</p>
+                <p><a href="lt.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>SST1003</h3>
+                <p>Professional Communication Skills for Engineers</p>
+                <p><a href="pcse.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>SST2003</h3>
+                <p>Dynamics of workplace communication Skills</p>
+                <p><a href="dwcs.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CHY1006</h3>
+                <p>Environmental Sustainability</p>
+                <p><a href="es.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ENG1004</h3>
+                <p>EFFECTIVE TECHNICAL COMMUNICATION</p>
+                <p><a href="etc.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ENG2005</h3>
+                <p>Advanced Technical Communication</p>
+                <p><a href="atc.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CHY2007</h3>
+                <p>Modeling And Simulation Of Biological Systems</p>
+                <p><a href="msbs.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT2001</h3>
+                <p>Differential And Difference Equations</p>
+                <p><a href="dde.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT2003</h3>
+                <p>Applied Numerical methods</p>
+                <p><a href="anm.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT2004</h3>
+                <p>Operations Research</p>
+                <p><a href="or.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT3004</h3>
+                <p>Random Process</p>
+                <p><a href="rp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MAT3008</h3>
+                <p>Computational Game Theory</p>
+                <p><a href="cgt.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>PHY2011</h3>
+                <p>Biophysics</p>
+                <p><a href="bp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>BIO1501</h3>
+                <p>Bio Inspired Design</p>
+                <p><a href="bid.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSD3005</h3>
+                <p>Data Privacy</p>
+                <p><a href="dp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSD3010</h3>
+                <p>Cyber Physical Systems</p>
+                <p><a href="cbs.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSG2003</h3>
+                <p>Human Computer Interaction</p>
+                <p><a href="hci.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>EAC4012</h3>
+                <p>Body Area Networks</p>
+                <p><a href="ban.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ECE4006</h3>
+                <p>Sensors And Iot</p>
+                <p><a href="sai.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>ENG3001</h3>
+                <p>Introduction to Computational Linguistics</p>
+                <p><a href="icl.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MEA2015</h3>
+                <p>ROBOT MOTION CONTROL</p>
+                <p><a href="rmc.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>BMT1013</h3>
+                <p>Human Resource Management</p>
+                <p><a href="hrm.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>HUM1002</h3>
+                <p>Emotional Intelligence</p>
+                <p><a href="ei.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+             <!-- wow -->
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>HUM2001</h3>
+                <p>Behavioural Science</p>
+                <p><a href="bs.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MGT1002</h3>
+                <p>PRINCIPLES OF MANAGEMENT AND
+                    ORGANIZATIONAL BEHAVIOUR</p>
+                <p><a href="pmob.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>MGT2003</h3>
+                <p>Technology Entrepreneurship</p>
+                <p><a href="te.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE0001</h3>
+                <p>Digital Literacy</p>
+                <p><a href="dl.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE0002</h3>
+                <p>OPEN SOURCE SOFTWARE (LINUX
+                    ADMINISTRATION)</p>
+                <p><a href="oss.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>HUM0003</h3>
+                <p>INDIAN CONSTITUTION</p>
+                <p><a href="ic.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>HUM0004</h3>
+                <p>INDIAN HERITAGE </p>
+                <p><a href="ih.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE3011</h3>
+                <p>Python Programming</p>
+                <p><a href="pp.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSD1001</h3>
+                <p>Principle of digital Forensics</p>
+                <p><a href="/css/pdfmtep1.jpg" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSA2003</h3>
+                <p>Digital Logic and Computer Architecture</p>
+                <p><a href="dlda.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSD4008</h3>
+                <p>Cyber Security Framework</p>
+                <p><a href="./css/csfmtep1.pdf" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE3001</h3>
+                <p>Database Management System</p>
+                <p><a href="dbms.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE3001</h3>
+                <p>Foundation of data science</p>
+                <p><a href="#" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3>CSE2004</h3>
+                <p>Theory of computation & compiler design</p>
+                <p><a href="tccd.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+            <div class="box">
+                <img src="./css/cat3.png" alt="" id="catimg">
+                <h3> CSE3004</h3>
+                <p> Design and Analysis of Algorithms</p>
+                <p><a href="daa.html" class="btn" id="clickbtn">papers </a></p>
+
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,105 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  .coding-sprint {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .coding-sprint h1 {
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    background-color: #a64545;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Chapter Styles */
+  .chapter {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .chapter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+  }
+  
+  .chapter-header h2 {
+    font-size: 18px;
+  }
+  
+  .chapter-header p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .toggle-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  /* Topic Styles */
+  .topics {
+    padding: 15px 20px;
+    display: none;
+  }
+  
+  .topic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .topic span {
+    font-size: 14px;
+  }
+  
+  .difficulty {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .progress {
+    color: #666;
+  }
+  
+  .solve-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .solve-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Active State */
+  .chapter.active .topics {
+    display: block;
+  }
+  
